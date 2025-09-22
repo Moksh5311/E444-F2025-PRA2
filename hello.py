@@ -41,7 +41,11 @@ def index():
             flash('Looks like you have changed your email!')
         session['name'] = form.name.data
         session['email'] = form.email.data
+
+        if ("utoronto" not in form.email.data):
+            session['email'] = None
         return redirect(url_for('index'))
+    
     return render_template('index.html',
         form = form, name = session.get('name'),  email = session.get('email'))
 
