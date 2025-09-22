@@ -18,7 +18,11 @@ def index():
 
 @app.route('/user/<name>')
 def user(name):
-    return render_template('user.html', name=name)
+    current_time = datetime.utcnow()  # naive UTC datetime
+
+    #current_time = now.astimezone()
+    print("Current time passed:", current_time)
+    return render_template('user.html', name=name, current_time = current_time)
 
 if __name__ == '__main__':
     app.run(debug=True)
